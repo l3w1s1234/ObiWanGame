@@ -54,24 +54,25 @@ public class control : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
+        
 		//flip sprite depending on direction facing
 		if(facingRight)
 			this.transform.localRotation = Quaternion.Euler(0, 0, 0);
 		else
 			this.transform.localRotation = Quaternion.Euler(0, 180, 0);
 
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+            canWalk = true;
 
-		//check that sprite is idle
-		if (anim.GetNextAnimatorStateInfo (0).IsName ("idle")) 
-			canWalk = true;
 
-		//check that player has landed
-		if (jumping)
-			checkLanded ();
+            //check that player has landed
+        if (jumping)
+		    checkLanded ();
 
 		setAnim ();
 
-		move();
+  
+        move();
 
 
 	}
@@ -109,7 +110,6 @@ public class control : MonoBehaviour
 	//check that player has landed
 	public void checkLanded()
 	{
-		int clip = Random.Range (0, 2);
 		if (rb2d.velocity.y == 0) 
 		{
 			
@@ -117,6 +117,7 @@ public class control : MonoBehaviour
 
 			Debug.Log ("has Landed");
 			jumping = false;
+            canWalk = true;
 		}
 	}
 
@@ -125,7 +126,7 @@ public class control : MonoBehaviour
 	public void setAnim()
 	{
 
-		//change animation if not moving or is moving
+        //change animation if not moving or is moving
 		if (!Input.anyKey) {
 			anim.SetBool ("isWalking", false);
 		} else if (Input.GetKey (left) && canWalk == true) {
@@ -141,7 +142,7 @@ public class control : MonoBehaviour
 			sound.clip = jumpSound;
 			sound.Play ();
 
-			anim.SetTrigger ("jump");
+            anim.SetTrigger("jump");
 		}
 			
 
@@ -161,7 +162,8 @@ public class control : MonoBehaviour
 
 			anim.SetTrigger ("taunt1");
 			canWalk = false;
-		} else if (Input.GetKeyDown (punch)) 
+		}
+        if (Input.GetKeyDown (punch)) 
 		{
 			rb2d.velocity = new Vector2 (0, rb2d.velocity.y);
 
@@ -170,7 +172,8 @@ public class control : MonoBehaviour
 
 			anim.SetTrigger ("punch");
 			canWalk = false;
-		}else if (Input.GetKeyDown (kick)) 
+		}
+        if (Input.GetKeyDown (kick)) 
 		{
 			rb2d.velocity = new Vector2 (0, rb2d.velocity.y);
 
@@ -180,7 +183,8 @@ public class control : MonoBehaviour
 
 			anim.SetTrigger ("kick");
 			canWalk = false;
-		}else if (Input.GetKeyDown (poke)) 
+		}
+        if (Input.GetKeyDown (poke)) 
 		{
 			rb2d.velocity = new Vector2 (0, rb2d.velocity.y);
 
@@ -189,7 +193,8 @@ public class control : MonoBehaviour
 
 			anim.SetTrigger ("poke");
 			canWalk = false;
-		}else if (Input.GetKeyDown (slash)) 
+		}
+        if (Input.GetKeyDown (slash)) 
 		{
 			rb2d.velocity = new Vector2 (0, rb2d.velocity.y);
 
