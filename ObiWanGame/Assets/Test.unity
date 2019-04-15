@@ -544,6 +544,7 @@ GameObject:
   - component: {fileID: 1053667316}
   - component: {fileID: 1053667318}
   - component: {fileID: 1053667317}
+  - component: {fileID: 1053667319}
   m_Layer: 0
   m_Name: Anakin
   m_TagString: Untagged
@@ -558,7 +559,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1053667314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.73, y: 0.17, z: 0}
+  m_LocalPosition: {x: 8.73, y: 0.15, z: 0}
   m_LocalScale: {x: 2.6673915, y: 2.3898664, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -651,6 +652,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &1053667319
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053667314}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e2948ae8e9e07944aa05adf8cce68b3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1140918135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,7 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpHeight: 400
+  jumpHeight: 500
   health: 100
   left: 276
   right: 275
