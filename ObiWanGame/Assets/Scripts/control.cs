@@ -54,9 +54,11 @@ public class control : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-        
-		//flip sprite depending on direction facing
-		if(facingRight)
+
+       
+
+        //flip sprite depending on direction facing
+        if (facingRight)
 			this.transform.localRotation = Quaternion.Euler(0, 0, 0);
 		else
 			this.transform.localRotation = Quaternion.Euler(0, 180, 0);
@@ -71,16 +73,25 @@ public class control : MonoBehaviour
 
 		setAnim ();
 
-  
+       
+
         move();
 
 
 	}
 
+    //check collison
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log(other.gameObject.tag);
 
+        if (other.gameObject.tag == "Enemy")
+        { 
+        }
+    }
 
-	//check keys for movement and move appropriatly
-	public void move()
+        //check keys for movement and move appropriatly
+        public void move()
 	{
 		
 		if (Input.GetKey (right) && canWalk == true) {
