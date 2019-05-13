@@ -153,6 +153,7 @@ public class control : MonoBehaviour
 			sound.clip = jumpSound;
 			sound.Play ();
 
+            anim.SetBool("isWalking", false);
             anim.SetTrigger("jump");
 		}
 			

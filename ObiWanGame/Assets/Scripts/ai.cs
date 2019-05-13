@@ -9,6 +9,26 @@ public class ai : MonoBehaviour {
     private Rigidbody2D rb2d;
     private AudioSource sound;
 
+    //stats
+    public int health = 100;
+
+    
+    //checkers
+    private bool canWalk = true;
+    private bool jumping = false;
+    private bool facingLeft = true;
+
+
+    //sounds
+    public AudioClip taunt1Sound;
+    public AudioClip taunt2Sound;
+    public AudioClip taunt3Sound;
+    public AudioClip punchSound;
+    public AudioClip kickSound;
+    public AudioClip pokeSound;
+    public AudioClip slashSound;
+    public AudioClip jumpSound;
+    public AudioClip landingSound;
 
 
     // Use this for initialization
@@ -28,7 +48,7 @@ public class ai : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             rb2d.isKinematic = true;
-            rb2d.velocity = Vector2.zero;
+            rb2d.velocity = rb2d.velocity * 0;
         }
     }
 
@@ -42,8 +62,13 @@ public class ai : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
 
+        //flip sprite depending on direction facing
+        if (facingLeft)
+            this.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        else
+            this.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
     }
 }
