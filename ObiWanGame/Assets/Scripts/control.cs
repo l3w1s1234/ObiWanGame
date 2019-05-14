@@ -121,7 +121,7 @@ public class control : MonoBehaviour
 	//check that player has landed
 	public void checkLanded()
 	{
-		if (rb2d.velocity.y == 0) 
+		if (rb2d.velocity.y == 0 && jumping == true) 
 		{
 			
 			swichClips (landingSound, taunt2Sound);

@@ -869,6 +869,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  speed: 4
+  jumpHeight: 500
   taunt1Sound: {fileID: 0}
   taunt2Sound: {fileID: 0}
   taunt3Sound: {fileID: 0}
@@ -1564,7 +1566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpHeight: 500
+  jumpHeight: 600
   health: 100
   left: 276
   right: 275
