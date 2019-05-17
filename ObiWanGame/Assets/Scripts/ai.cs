@@ -20,6 +20,7 @@ public class ai : MonoBehaviour {
     private bool canWalk = true;
     private bool jumping = false;
     private bool facingLeft = true;
+    private bool attacking = false;
 
 
     //sounds
@@ -75,23 +76,27 @@ public class ai : MonoBehaviour {
 
         //Debug.Log(Distance().ToString());
 
-        checkDirection();
-
-        //flip sprite depending on direction facing
-        if (facingLeft)
-            this.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        else
-            this.transform.localRotation = Quaternion.Euler(0, 0, 0);
-
-        //check health and determine whether to play defensive or offensive
-        if(health > 30)
+        //check that ai hasnt attacked before doing anything else
+        if(!attacking)
         {
-            offensive();
+            //flip sprite depending on direction facing
+            checkDirection();
+            if (facingLeft)
+                this.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            else
+                this.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+            //check health and determine whether to play defensive or offensive
+            if (health > 30)
+            {
+                offensive();
+            }
+            else
+            {
+                defensive();
+            }
         }
-        else
-        {
-            defensive();
-        }
+        
 
     }
 
@@ -118,17 +123,35 @@ public class ai : MonoBehaviour {
     //play offensive
     void offensive()
     {
+        //random move selection
+        int attack = Random.Range(0, 4);
+
         //check distance to start walking towards player
-        if(Distance() > 3.5 && player.position.y <= me.position.y)
+        if(Distance() > 2 && player.position.y <= me.position.y)
         {
-            anim.SetBool("isWalking", true);
-            walk();
+            if(!attacking)
+            {
+                anim.SetBool("isWalking", true);
+                walk();
+            } 
         }
         else
         {
             anim.SetBool("isWalking", false);
-            rb2d.velocity = Vector2.zero; 
+            rb2d.velocity = Vector2.zero;
 
+            if(!attacking)
+            {
+                attacking = true;
+                switch (attack)
+                {
+                    case 0: anim.SetTrigger("punch");break;
+                    case 1: anim.SetTrigger("kick");  break;
+                    case 2: anim.SetTrigger("poke"); break;
+                    case 3: anim.SetTrigger("slash");  break;
+                }
+             
+            }
         }
     }
 
@@ -136,6 +159,61 @@ public class ai : MonoBehaviour {
     void defensive()
     {
 
+    }
+
+    //jump
+    void jump()
+    {
+
+    }
+
+    //this is an animation event called once an animation has finished
+   void OnCompleteAttackAnimation()
+    {
+        Debug.Log("stopped attacking");
+        //check if anakin will jump away or run away
+        int rnd = Random.Range(0, 1);
+        rb2d.velocity = Vector2.zero;
+        switch (rnd)
+        {
+            case 0:
+                StartCoroutine(runAway(Random.Range(0.5f, 1.5f))); break;
+            case 1:
+                StartCoroutine(runAway(Random.Range(0.5f, 1.5f))); break;
+        }
+
+    }
+
+
+        //walk opposite direction X amount of seconds
+        IEnumerator runAway(float seconds)
+    {
+        Debug.Log("Running Away" + seconds.ToString());
+
+        var time = 0f;
+        rb2d.velocity = Vector2.zero;
+
+        facingLeft = !facingLeft;
+
+        //flip sprite depending on direction facing
+        if (facingLeft)
+            this.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        else
+            this.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+        //walk for X seconds here
+        while (time < seconds)
+        {
+            anim.SetBool("isWalking", true);
+            walk();
+            time += Time.deltaTime;
+
+            yield return null;
+        }
+
+        //turn off walking animation
+        anim.SetBool("isWalking", false);
+        attacking = false;
     }
 
     //walk towards player
