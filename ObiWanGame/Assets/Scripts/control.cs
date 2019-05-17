@@ -74,8 +74,8 @@ public class control : MonoBehaviour
 		setAnim ();
 
        
-
-        move();
+        if(canWalk)
+            move();
 
 
 	}
@@ -94,10 +94,10 @@ public class control : MonoBehaviour
         public void move()
 	{
 		
-		if (Input.GetKey (right) && canWalk == true) {
+		if (Input.GetKey (right)) {
 			facingRight = true;
 			rb2d.velocity = new Vector2 (speed, rb2d.velocity.y);
-		} else if (Input.GetKey(left) && canWalk == true) 
+		} else if (Input.GetKey(left)) 
 		{
 			facingRight = false;
 			rb2d.velocity = new Vector2 (-speed, rb2d.velocity.y);
@@ -110,8 +110,11 @@ public class control : MonoBehaviour
 		//check if jumping
 		if (Input.GetKey(jump) && jumping == false ) 
 		{
-			canWalk = false;
-			rb2d.AddForce(Vector2.up * jumpHeight);
+            anim.SetBool("isWalking", false);
+            anim.SetTrigger("jump");
+            sound.clip = jumpSound;
+            sound.Play();
+            rb2d.AddForce(Vector2.up * jumpHeight);
 			jumping = true;
 		}
 	}
@@ -126,7 +129,8 @@ public class control : MonoBehaviour
 			
 			swichClips (landingSound, taunt2Sound);
 
-			Debug.Log ("has Landed");
+            
+            Debug.Log ("has Landed");
 			jumping = false;
             canWalk = true;
 		}
@@ -147,16 +151,7 @@ public class control : MonoBehaviour
 		}
 
 
-		//Jumping animation
-		if (Input.GetKeyDown(jump) && jumping == false) {
-			
-			sound.clip = jumpSound;
-			sound.Play ();
 
-            anim.SetBool("isWalking", false);
-            anim.SetTrigger("jump");
-		}
-			
 
 		//check if player is falling
 		if (rb2d.velocity.y < -0.5) {
@@ -217,6 +212,12 @@ public class control : MonoBehaviour
 		}
 			
 	}
+
+    //when attack animation has finished
+    void onAttackFinish()
+    {
+        canWalk = true;
+    }
 
 	//chooses a random clip out of 2
 	private void swichClips(AudioClip clip1, AudioClip clip2)

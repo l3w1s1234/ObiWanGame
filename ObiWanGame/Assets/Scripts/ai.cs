@@ -23,6 +23,7 @@ public class ai : MonoBehaviour {
     private bool attacking = false;
 
 
+
     //sounds
     public AudioClip taunt1Sound;
     public AudioClip taunt2Sound;
@@ -61,10 +62,8 @@ public class ai : MonoBehaviour {
             rb2d.velocity = rb2d.velocity * 0;
         }
 
-        if (other.gameObject.name == "floor" && jumping)
-        {
-            checkLanded();
-        }
+
+
     }
 
     //check that collision has exited
@@ -81,6 +80,11 @@ public class ai : MonoBehaviour {
 
         //Debug.Log(Distance().ToString());
 
+
+
+        if (jumping && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+            checkLanded();
+
         //check that ai is falling and change animation
         if (rb2d.velocity.y < -0.5)
         {
@@ -90,6 +94,7 @@ public class ai : MonoBehaviour {
         {
             anim.SetBool("isFalling", false);
         }
+        
 
         //check that ai hasnt attacked before doing anything else
         if (!attacking)
@@ -97,6 +102,8 @@ public class ai : MonoBehaviour {
             //flip sprite depending on direction facing
             checkDirection();
             changeFacing();
+
+            
 
             //check health and determine whether to play defensive or offensive
             if (health > 30)
@@ -173,13 +180,27 @@ public class ai : MonoBehaviour {
         //check distance to start walking towards player
         if(Distance() > 2 && player.position.y <= me.position.y)
         {
-            if(!attacking && !jumping)
+            int tauntChance = Random.Range(0, 100);
+            //do taunt
+            if (tauntChance == 1 && !attacking && !jumping)
             {
+                attacking = true;
+                anim.SetBool("isWalking", false);
+                rb2d.velocity = Vector2.zero;
+                anim.SetTrigger("taunt");
+                sound.clip = taunt1Sound;
+                sound.Play();
+            }
+
+            if (!attacking && !jumping)
+            {
+                
+                //walk
                 anim.SetBool("isWalking", true);
                 walk();
             } 
         }
-        else
+        else if(Distance() < 2)
         {
             anim.SetBool("isWalking", false);
             rb2d.velocity = Vector2.zero;
@@ -203,6 +224,11 @@ public class ai : MonoBehaviour {
              
             }
         }
+        else if(player.position.y > me.position.y)
+        {
+            anim.SetBool("isWalking", false);
+            rb2d.velocity = Vector2.zero;
+        }
     }
 
     //play defensive
@@ -215,7 +241,8 @@ public class ai : MonoBehaviour {
     void jump()
     {
         changeFacing();
-
+        //sound.clip = jumpSound;
+        //sound.Play();
         jumping = true;
         walk();
         rb2d.AddForce(Vector2.up * jumpHeight);
@@ -241,6 +268,12 @@ public class ai : MonoBehaviour {
 
     }
 
+    //animation event called when finished taunting
+    void onTauntFinish()
+    {
+        attacking = false;
+    }
+
     //flip sprite depending on direction facing
     void changeFacing()
     {
@@ -253,7 +286,7 @@ public class ai : MonoBehaviour {
         //walk opposite direction X amount of seconds
         IEnumerator runAway(float seconds)
     {
-        Debug.Log("Running Away" + seconds.ToString());
+        //Debug.Log("Running Away" + seconds.ToString());
 
         var time = 0f;
         rb2d.velocity = Vector2.zero;
