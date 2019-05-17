@@ -55,10 +55,15 @@ public class ai : MonoBehaviour {
     //check collison
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !jumping)
         {
             rb2d.isKinematic = true;
             rb2d.velocity = rb2d.velocity * 0;
+        }
+
+        if (other.gameObject.name == "floor" && jumping)
+        {
+            checkLanded();
         }
     }
 
@@ -76,15 +81,22 @@ public class ai : MonoBehaviour {
 
         //Debug.Log(Distance().ToString());
 
+        //check that ai is falling and change animation
+        if (rb2d.velocity.y < -0.5)
+        {
+            anim.SetBool("isFalling", true);
+        }
+        else if (rb2d.velocity.y == 0)
+        {
+            anim.SetBool("isFalling", false);
+        }
+
         //check that ai hasnt attacked before doing anything else
-        if(!attacking)
+        if (!attacking)
         {
             //flip sprite depending on direction facing
             checkDirection();
-            if (facingLeft)
-                this.transform.localRotation = Quaternion.Euler(0, 180, 0);
-            else
-                this.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            changeFacing();
 
             //check health and determine whether to play defensive or offensive
             if (health > 30)
@@ -98,6 +110,25 @@ public class ai : MonoBehaviour {
         }
         
 
+    }
+
+    //chooses a random clip out of 2
+    private void swichClips(AudioClip clip1, AudioClip clip2)
+    {
+        int clip = Random.Range(0, 2);
+
+        switch (clip)
+        {
+            case 0:
+                sound.clip = clip1;
+                sound.Play();
+                break;
+
+            case 1:
+                sound.clip = clip2;
+                sound.Play();
+                break;
+        }
     }
 
     //check if enemy should face left or right
@@ -120,6 +151,19 @@ public class ai : MonoBehaviour {
         return Vector2.Distance(me.position, player.position);
     }
 
+
+    //check that player has landed
+    public void checkLanded()
+    {
+        if (rb2d.velocity.y == 0 && jumping == true)
+        {
+
+            swichClips(landingSound, taunt2Sound);
+            jumping = false;
+            attacking = false;
+        }
+    }
+
     //play offensive
     void offensive()
     {
@@ -129,7 +173,7 @@ public class ai : MonoBehaviour {
         //check distance to start walking towards player
         if(Distance() > 2 && player.position.y <= me.position.y)
         {
-            if(!attacking)
+            if(!attacking && !jumping)
             {
                 anim.SetBool("isWalking", true);
                 walk();
@@ -145,10 +189,16 @@ public class ai : MonoBehaviour {
                 attacking = true;
                 switch (attack)
                 {
-                    case 0: anim.SetTrigger("punch");break;
-                    case 1: anim.SetTrigger("kick");  break;
-                    case 2: anim.SetTrigger("poke"); break;
-                    case 3: anim.SetTrigger("slash");  break;
+                    case 0: anim.SetTrigger("punch");
+                        sound.clip = punchSound;
+                        sound.Play(); break;
+                    case 1: anim.SetTrigger("kick");
+                        sound.clip = kickSound;
+                        sound.Play(); break;
+                    case 2: anim.SetTrigger("poke");
+                        swichClips(pokeSound, slashSound); break;
+                    case 3: anim.SetTrigger("slash");
+                        swichClips(slashSound,taunt3Sound); break;
                 }
              
             }
@@ -164,7 +214,12 @@ public class ai : MonoBehaviour {
     //jump
     void jump()
     {
+        changeFacing();
 
+        jumping = true;
+        walk();
+        rb2d.AddForce(Vector2.up * jumpHeight);
+        anim.SetTrigger("jump");
     }
 
     //this is an animation event called once an animation has finished
@@ -172,18 +227,28 @@ public class ai : MonoBehaviour {
     {
         Debug.Log("stopped attacking");
         //check if anakin will jump away or run away
-        int rnd = Random.Range(0, 1);
+        int rnd = Random.Range(0, 2);
         rb2d.velocity = Vector2.zero;
         switch (rnd)
         {
             case 0:
                 StartCoroutine(runAway(Random.Range(0.5f, 1.5f))); break;
             case 1:
-                StartCoroutine(runAway(Random.Range(0.5f, 1.5f))); break;
+                facingLeft = !facingLeft;
+                StartCoroutine(walkThenJump(0.1f));
+                break;
         }
 
     }
 
+    //flip sprite depending on direction facing
+    void changeFacing()
+    {
+        if (facingLeft)
+            this.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        else
+            this.transform.localRotation = Quaternion.Euler(0, 0, 0);
+    }
 
         //walk opposite direction X amount of seconds
         IEnumerator runAway(float seconds)
@@ -194,12 +259,8 @@ public class ai : MonoBehaviour {
         rb2d.velocity = Vector2.zero;
 
         facingLeft = !facingLeft;
+        changeFacing();
 
-        //flip sprite depending on direction facing
-        if (facingLeft)
-            this.transform.localRotation = Quaternion.Euler(0, 180, 0);
-        else
-            this.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
         //walk for X seconds here
         while (time < seconds)
@@ -216,7 +277,7 @@ public class ai : MonoBehaviour {
         attacking = false;
     }
 
-    //walk towards player
+    //walk towards directiuon that it is currently facing
     void walk()
     {
         if(facingLeft)
@@ -227,6 +288,21 @@ public class ai : MonoBehaviour {
         {
             rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
         }
+
+    }
+
+    //walk for a set amount of seconds before jumping
+    IEnumerator walkThenJump(float delay)
+    {
+        var time = 0f;
+        while (time < delay)
+        {
+            walk();
+            time += Time.deltaTime;
+            yield return null;
+
+        }
+        jump();
 
     }
 
