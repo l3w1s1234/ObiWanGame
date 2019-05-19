@@ -532,6 +532,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &838033621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 838033622}
+  m_Layer: 8
+  m_Name: AttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &838033622
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 838033621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.163, y: 0.086, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1946169171}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &858891740
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,7 +615,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 901922843}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -635,6 +663,34 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1006239212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1006239213}
+  m_Layer: 9
+  m_Name: AttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1006239213
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1006239212}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.163, y: 0.086, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1053667315}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1039270773
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +789,7 @@ GameObject:
   - component: {fileID: 1053667319}
   - component: {fileID: 1053667321}
   - component: {fileID: 1053667320}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Anakin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -747,9 +803,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1053667314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.73, y: 0.15, z: 0}
+  m_LocalPosition: {x: 8.75, y: 0.15, z: 0}
   m_LocalScale: {x: 2.6673915, y: 2.3898664, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1006239213}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -868,15 +925,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571a33e5e67e6c94c8fcf65d7f53f9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  healthBar: {fileID: 449721486}
+  regen: 5
   speed: 5
   jumpHeight: 400
+  attackPos: {fileID: 1006239213}
+  attackRange: 1.68
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 256
+  damage: 5
   taunt1Sound: {fileID: 8300000, guid: f3604c8e7bf90dd478b73b87c88ec14a, type: 3}
   taunt2Sound: {fileID: 8300000, guid: d223bd91811d15f42a07f5ffdcffb817, type: 3}
   taunt3Sound: {fileID: 8300000, guid: 41427b3a5a994794e9232fdb4ac8408e, type: 3}
   punchSound: {fileID: 8300000, guid: a45f9ccc216322942a924610521e35a8, type: 3}
   kickSound: {fileID: 8300000, guid: e09203c89b28d6e42a6d322691fb0386, type: 3}
-  pokeSound: {fileID: 8300000, guid: 1cc92f15ee086544db06c03c6cc32b4a, type: 3}
+  pokeSound: {fileID: 8300000, guid: 6d72e5d70245ffe4baa57720a462f449, type: 3}
   slashSound: {fileID: 8300000, guid: d2cf3d4e354ee8140822ad7a9c669c36, type: 3}
   jumpSound: {fileID: 8300000, guid: 7640348e2780e264680d852c9658535e, type: 3}
   landingSound: {fileID: 8300000, guid: 73b0512f8dcfa15409c0813b4e72b8eb, type: 3}
@@ -1475,7 +1539,7 @@ GameObject:
   - component: {fileID: 1946169174}
   - component: {fileID: 1946169172}
   - component: {fileID: 1946169175}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ObiWan
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1550,7 +1614,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.11, y: 0.15, z: 0}
   m_LocalScale: {x: 2.7348404, y: 2.3000839, z: 0.9818266}
-  m_Children: []
+  m_Children:
+  - {fileID: 838033622}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1567,7 +1632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpHeight: 600
-  health: 100
+  regen: 5
   left: 276
   right: 275
   taunt1: 116
@@ -1576,6 +1641,7 @@ MonoBehaviour:
   poke: 118
   slash: 99
   jump: 32
+  healthBar: {fileID: 1039270775}
   taunt1Sound: {fileID: 8300000, guid: 2e8b3e4f41432f447a1873260fe9b7ad, type: 3}
   taunt2Sound: {fileID: 8300000, guid: 8b16ae8f481922140af03df5c5e67660, type: 3}
   taunt3Sound: {fileID: 8300000, guid: 81a1333cbb27e2e419b196892d27c283, type: 3}
@@ -1585,6 +1651,12 @@ MonoBehaviour:
   slashSound: {fileID: 8300000, guid: d2cf3d4e354ee8140822ad7a9c669c36, type: 3}
   jumpSound: {fileID: 8300000, guid: 5cbec6f7a894bfd42bebf387821a034c, type: 3}
   landingSound: {fileID: 8300000, guid: 73b0512f8dcfa15409c0813b4e72b8eb, type: 3}
+  attackPos: {fileID: 838033622}
+  attackRange: 1.68
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 512
+  damage: 5
 --- !u!50 &1946169173
 Rigidbody2D:
   serializedVersion: 4

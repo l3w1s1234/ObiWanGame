@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class control : MonoBehaviour 
 {
@@ -9,7 +10,8 @@ public class control : MonoBehaviour
 	public float jumpHeight = 5;
 
 	//stats
-	public int health = 100;
+	private int health = 100;
+    public int regen = 5;
 
 	//keys
 	public KeyCode left;
@@ -25,11 +27,14 @@ public class control : MonoBehaviour
 	private Animator anim;
 	private Rigidbody2D rb2d;
 	private AudioSource sound;
+    public Slider healthBar;
 
 	//checkers
 	private bool canWalk = true;
 	private bool jumping = false;
 	private bool facingRight = true;
+    private bool attacking = false;
+    private bool hit = false;
 
 	//sounds
 	public AudioClip taunt1Sound;
@@ -43,7 +48,13 @@ public class control : MonoBehaviour
 	public AudioClip landingSound;
 
 
-	void Start () 
+    //attack variables
+    public Transform attackPos;
+    public float attackRange;
+    public LayerMask whatIsEnemy;
+    public int damage;
+
+    void Start () 
 	{
 		rb2d = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
@@ -54,8 +65,9 @@ public class control : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-
-       
+        //keep health at 100
+        if (health > 100)
+            health = 100;
 
         //flip sprite depending on direction facing
         if (facingRight)
@@ -77,8 +89,46 @@ public class control : MonoBehaviour
         if(canWalk)
             move();
 
+        //deal damage to any enemies being attacked
+        if(attacking)
+        {
+            if (!hit)
+            {
+                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
 
+                //check that an enemy has been hit
+                if (enemiesToDamage != null)
+                    hit = true;
+                //damage enmies in damage radius
+                for (int i = 0; i < enemiesToDamage.Length; i++)
+                {
+                    enemiesToDamage[i].GetComponent<ai>().takeDamage(damage);
+                }
+            }
+        }
 	}
+
+    //for test purposes/see hit area
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+    //take damage from AI
+    public void takeDamage(int amount)
+    {
+        health -= amount;
+        healthBar.value = health;
+        Debug.Log("Damage Taken");
+    }
+
+    //used to reheal // called after taunt animation
+    void reHeal()
+    {
+        health += regen;
+        healthBar.value = health;
+    }
 
     //check collison
     void OnCollisionEnter2D(Collision2D other)
@@ -179,7 +229,8 @@ public class control : MonoBehaviour
 
 			anim.SetTrigger ("punch");
 			canWalk = false;
-		}
+            attacking = true;
+        }
         if (Input.GetKeyDown (kick)) 
 		{
 			rb2d.velocity = new Vector2 (0, rb2d.velocity.y);
@@ -190,7 +241,8 @@ public class control : MonoBehaviour
 
 			anim.SetTrigger ("kick");
 			canWalk = false;
-		}
+            attacking = true;
+        }
         if (Input.GetKeyDown (poke)) 
 		{
 			rb2d.velocity = new Vector2 (0, rb2d.velocity.y);
@@ -200,7 +252,8 @@ public class control : MonoBehaviour
 
 			anim.SetTrigger ("poke");
 			canWalk = false;
-		}
+            attacking = true;
+        }
         if (Input.GetKeyDown (slash)) 
 		{
 			rb2d.velocity = new Vector2 (0, rb2d.velocity.y);
@@ -209,13 +262,16 @@ public class control : MonoBehaviour
 
 			anim.SetTrigger ("slash");
 			canWalk = false;
-		}
+            attacking = true;
+        }
 			
 	}
 
     //when attack animation has finished
     void onAttackFinish()
     {
+        attacking = false;
+        hit = false;
         canWalk = true;
     }
 

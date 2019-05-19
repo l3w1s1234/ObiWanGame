@@ -8,9 +8,12 @@ public class ai : MonoBehaviour {
     private Animator anim;
     private Rigidbody2D rb2d;
     private AudioSource sound;
+    private Animator playerAnim;
+    public UnityEngine.UI.Slider healthBar;
 
     //stats
-    public int health = 100;
+    private int health = 100;
+    public int regen = 5;
 
     //for movement 
     public float speed;
@@ -21,8 +24,14 @@ public class ai : MonoBehaviour {
     private bool jumping = false;
     private bool facingLeft = true;
     private bool attacking = false;
+    private bool hit = false;
+    private bool taunt = false;
 
-
+    //attack variables
+    public Transform attackPos;
+    public float attackRange;
+    public LayerMask whatIsEnemy;
+    public int damage;
 
     //sounds
     public AudioClip taunt1Sound;
@@ -49,7 +58,6 @@ public class ai : MonoBehaviour {
         anim = GetComponent<Animator>();
         sound = GetComponent<AudioSource>();
 
-        
     }
 
 
@@ -63,16 +71,6 @@ public class ai : MonoBehaviour {
         }
 
 
-
-    }
-
-    //check that collision has exited
-    void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            rb2d.isKinematic = false;
-        }
     }
 
     // Update is called once per frame
@@ -80,7 +78,9 @@ public class ai : MonoBehaviour {
 
         //Debug.Log(Distance().ToString());
 
-
+        //keep health in range
+        if (health > 100)
+            health = 100;
 
         if (jumping && anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
             checkLanded();
@@ -97,27 +97,71 @@ public class ai : MonoBehaviour {
         
 
         //check that ai hasnt attacked before doing anything else
-        if (!attacking)
+        if (!attacking && !taunt)
         {
             //flip sprite depending on direction facing
             checkDirection();
             changeFacing();
 
-            
+            //perform offensive actions
+            offensive();
 
-            //check health and determine whether to play defensive or offensive
-            if (health > 30)
+
+        }
+        else if(attacking)
+        {
+            if(!hit)
             {
-                offensive();
+                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy );
+                
+                //check that an enemy has been hit
+                if (enemiesToDamage != null)
+                    hit = true;
+                //damage enmies in damage radius
+                for (int i = 0; i< enemiesToDamage.Length; i++)
+                {
+                    enemiesToDamage[i].GetComponent<control>().takeDamage(damage);
+                }
             }
-            else
-            {
-                defensive();
-            }
+            
         }
         
 
     }
+
+    //for test purposes/see hit area
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+
+    //re-heal called after taunt animation
+    public void reHeal()
+    {
+        health += regen;
+        healthBar.value = health;
+    }
+
+    //take damage from AI
+    public void takeDamage(int amount)
+    {
+        health -= amount;
+        healthBar.value = health;
+        Debug.Log("Damage Taken");
+    }
+
+    //check that collision has exited
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            rb2d.isKinematic = false;
+        }
+    }
+
+
 
     //chooses a random clip out of 2
     private void swichClips(AudioClip clip1, AudioClip clip2)
@@ -184,7 +228,7 @@ public class ai : MonoBehaviour {
             //do taunt
             if (tauntChance == 1 && !attacking && !jumping)
             {
-                attacking = true;
+                taunt = true;
                 anim.SetBool("isWalking", false);
                 rb2d.velocity = Vector2.zero;
                 anim.SetTrigger("taunt");
@@ -255,6 +299,7 @@ public class ai : MonoBehaviour {
         Debug.Log("stopped attacking");
         //check if anakin will jump away or run away
         int rnd = Random.Range(0, 2);
+        hit = false;
         rb2d.velocity = Vector2.zero;
         switch (rnd)
         {
@@ -271,7 +316,8 @@ public class ai : MonoBehaviour {
     //animation event called when finished taunting
     void onTauntFinish()
     {
-        attacking = false;
+        reHeal();
+        taunt = false;
     }
 
     //flip sprite depending on direction facing
@@ -283,8 +329,8 @@ public class ai : MonoBehaviour {
             this.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
-        //walk opposite direction X amount of seconds
-        IEnumerator runAway(float seconds)
+   //walk opposite direction X amount of seconds
+   IEnumerator runAway(float seconds)
     {
         //Debug.Log("Running Away" + seconds.ToString());
 
