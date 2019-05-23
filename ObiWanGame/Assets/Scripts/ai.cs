@@ -10,6 +10,7 @@ public class ai : MonoBehaviour {
     private AudioSource sound;
     private Animator playerAnim;
     public UnityEngine.UI.Slider healthBar;
+    private FightState fs;
 
     //stats
     private int health = 100;
@@ -54,6 +55,7 @@ public class ai : MonoBehaviour {
         me = this.transform;
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        fs = GameObject.Find("Countdown").GetComponent<FightState>();
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sound = GetComponent<AudioSource>();
@@ -95,38 +97,40 @@ public class ai : MonoBehaviour {
             anim.SetBool("isFalling", false);
         }
         
-
-        //check that ai hasnt attacked before doing anything else
-        if (!attacking && !taunt)
+        //check that the fight is on before fighting
+        if(fs.fight)
         {
-            //flip sprite depending on direction facing
-            checkDirection();
-            changeFacing();
-
-            //perform offensive actions
-            offensive();
-
-
-        }
-        else if(attacking)
-        {
-            if(!hit)
+            //check that ai hasnt attacked before doing anything else
+            if (!attacking && !taunt)
             {
-                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy );
-                
-                //check that an enemy has been hit
-                if (enemiesToDamage != null)
-                    hit = true;
-                //damage enmies in damage radius
-                for (int i = 0; i< enemiesToDamage.Length; i++)
-                {
-                    enemiesToDamage[i].GetComponent<control>().takeDamage(damage);
-                }
-            }
-            
-        }
-        
+                //flip sprite depending on direction facing
+                checkDirection();
 
+                changeFacing();
+
+                //perform offensive actions
+                offensive();
+
+
+            }
+            else if (attacking)
+            {
+                if (!hit)
+                {
+                    Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
+
+                    //check that an enemy has been hit
+                    if (enemiesToDamage != null)
+                        hit = true;
+                    //damage enmies in damage radius
+                    for (int i = 0; i < enemiesToDamage.Length; i++)
+                    {
+                        enemiesToDamage[i].GetComponent<control>().takeDamage(damage);
+                    }
+                }
+
+            }
+        }
     }
 
     //for test purposes/see hit area
@@ -236,9 +240,8 @@ public class ai : MonoBehaviour {
                 sound.Play();
             }
 
-            if (!attacking && !jumping)
+            if (!attacking && !jumping && !taunt)
             {
-                
                 //walk
                 anim.SetBool("isWalking", true);
                 walk();

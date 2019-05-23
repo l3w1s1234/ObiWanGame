@@ -28,6 +28,7 @@ public class control : MonoBehaviour
 	private Rigidbody2D rb2d;
 	private AudioSource sound;
     public Slider healthBar;
+    private FightState fs;
 
 	//checkers
 	private bool canWalk = true;
@@ -56,7 +57,8 @@ public class control : MonoBehaviour
 
     void Start () 
 	{
-		rb2d = GetComponent<Rigidbody2D> ();
+        fs = GameObject.Find("Countdown").GetComponent<FightState>();
+        rb2d = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
 		sound = GetComponent<AudioSource> ();
 	}
@@ -83,29 +85,34 @@ public class control : MonoBehaviour
         if (jumping)
 		    checkLanded ();
 
-		setAnim ();
-
-       
-        if(canWalk)
-            move();
-
-        //deal damage to any enemies being attacked
-        if(attacking)
+        //check that the fight is on before granting user control
+        if(fs.fight)
         {
-            if (!hit)
-            {
-                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
+            setAnim();
 
-                //check that an enemy has been hit
-                if (enemiesToDamage != null)
-                    hit = true;
-                //damage enmies in damage radius
-                for (int i = 0; i < enemiesToDamage.Length; i++)
+
+            if (canWalk)
+                move();
+
+            //deal damage to any enemies being attacked
+            if (attacking)
+            {
+                if (!hit)
                 {
-                    enemiesToDamage[i].GetComponent<ai>().takeDamage(damage);
+                    Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
+
+                    //check that an enemy has been hit
+                    if (enemiesToDamage != null)
+                        hit = true;
+                    //damage enmies in damage radius
+                    for (int i = 0; i < enemiesToDamage.Length; i++)
+                    {
+                        enemiesToDamage[i].GetComponent<ai>().takeDamage(damage);
+                    }
                 }
             }
         }
+		
 	}
 
     //for test purposes/see hit area
