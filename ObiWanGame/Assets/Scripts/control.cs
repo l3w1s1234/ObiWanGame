@@ -63,10 +63,34 @@ public class control : MonoBehaviour
 		sound = GetComponent<AudioSource> ();
 	}
 
+    //for physiscs like jumping
+    void FixedUpdate()
+    {
+        //check fight is active
+        if (fs.fight)
+        {
+
+                //check if  can jumping
+                if (Input.GetKey(jump) && jumping == false)
+                {
+                    anim.SetBool("isWalking", false);
+                    anim.SetTrigger("jump");
+                    sound.clip = jumpSound;
+                    sound.Play();
+                    rb2d.AddForce(Vector2.up * jumpHeight);
+                    jumping = true;
+                }
+            
+
+        }
+    }
+
 
 	// Update is called once per frame
-	void FixedUpdate () 
+	void Update () 
 	{
+
+       
         //keep health at 100
         if (health > 100)
             health = 100;
@@ -88,6 +112,14 @@ public class control : MonoBehaviour
         //check that the fight is on before granting user control
         if(fs.fight)
         {
+
+            //if health is less than 0 AI wins
+            if (health <= 0)
+            {
+                fs.hasLost();
+            }
+
+
             setAnim();
 
 
@@ -164,16 +196,7 @@ public class control : MonoBehaviour
 			rb2d.velocity = new Vector2 (0, rb2d.velocity.y);
 		}
 
-		//check if jumping
-		if (Input.GetKey(jump) && jumping == false ) 
-		{
-            anim.SetBool("isWalking", false);
-            anim.SetTrigger("jump");
-            sound.clip = jumpSound;
-            sound.Play();
-            rb2d.AddForce(Vector2.up * jumpHeight);
-			jumping = true;
-		}
+		
 	}
 
 

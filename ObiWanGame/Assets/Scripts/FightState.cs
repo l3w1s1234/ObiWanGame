@@ -8,7 +8,7 @@ public class FightState : MonoBehaviour {
     public bool fight = false;
     public bool win = false;
     public bool lose = false;
-    public bool[] clipPlayed = new bool[4];
+    public bool[] clipPlayed = new bool[6];
 
     public AudioClip count;
     public Sprite[] sprite;
@@ -93,13 +93,17 @@ public class FightState : MonoBehaviour {
     //called when AI is out of health
     public void hasWon()
     {
-        win = true;
+        fight = false;
+        image.enabled = !image.enabled;
+        image.sprite = sprite[4];
     }
 
     //called when player is out of health
     public void hasLost()
     {
-        lose = false;
+        fight = false;
+        image.enabled = !image.enabled;
+        image.sprite = sprite[5];
     }
 
 

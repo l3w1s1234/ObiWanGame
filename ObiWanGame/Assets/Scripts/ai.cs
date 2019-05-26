@@ -79,6 +79,8 @@ public class ai : MonoBehaviour {
     void FixedUpdate () {
 
         //Debug.Log(Distance().ToString());
+        
+        
 
         //keep health in range
         if (health > 100)
@@ -100,6 +102,13 @@ public class ai : MonoBehaviour {
         //check that the fight is on before fighting
         if(fs.fight)
         {
+            //if health is less than 0 player wins
+            if (health <= 0)
+            {
+                fs.hasWon();
+            }
+
+
             //check that ai hasnt attacked before doing anything else
             if (!attacking && !taunt)
             {
