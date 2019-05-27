@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FightState : MonoBehaviour {
 
@@ -97,6 +98,7 @@ public class FightState : MonoBehaviour {
         fight = false;
         image.enabled = !image.enabled;
         image.sprite = sprite[4];
+        StartCoroutine(quitFight());
     }
 
     //called when player is out of health
@@ -106,6 +108,7 @@ public class FightState : MonoBehaviour {
         fight = false;
         image.enabled = !image.enabled;
         image.sprite = sprite[5];
+        StartCoroutine(quitFight());
     }
 
 
@@ -114,4 +117,19 @@ public class FightState : MonoBehaviour {
             
 	}
 
+    //wait 4 seconds and load menu
+    IEnumerator quitFight()
+    {
+        var time = 0f;
+
+        while(time <= 4f)
+        {
+            time += Time.deltaTime;
+
+            yield return null;
+        }
+
+        SceneManager.LoadScene("Menu");
+        
+    }
 }
