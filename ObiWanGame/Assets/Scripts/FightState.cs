@@ -93,6 +93,7 @@ public class FightState : MonoBehaviour {
     //called when AI is out of health
     public void hasWon()
     {
+        win = true;
         fight = false;
         image.enabled = !image.enabled;
         image.sprite = sprite[4];
@@ -101,6 +102,7 @@ public class FightState : MonoBehaviour {
     //called when player is out of health
     public void hasLost()
     {
+        lose = true;
         fight = false;
         image.enabled = !image.enabled;
         image.sprite = sprite[5];

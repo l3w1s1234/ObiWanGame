@@ -113,13 +113,6 @@ public class control : MonoBehaviour
         if(fs.fight)
         {
 
-            //if health is less than 0 AI wins
-            if (health <= 0)
-            {
-                fs.hasLost();
-            }
-
-
             setAnim();
 
 
@@ -143,9 +136,22 @@ public class control : MonoBehaviour
                     }
                 }
             }
+
+            //if health is less than 0 AI wins
+            if (health <= 0)
+            {
+                fs.hasLost();
+                anim.enabled = false;
+            }
         }
-		
-	}
+
+        //check that we have won to disable animation
+        if (fs.win)
+        {
+            anim.enabled = false;
+        }
+
+    }
 
     //for test purposes/see hit area
     void OnDrawGizmosSelected()
@@ -213,6 +219,7 @@ public class control : MonoBehaviour
             Debug.Log ("has Landed");
 			jumping = false;
             canWalk = true;
+            anim.SetBool("falling", false);
 		}
 	}
 
@@ -235,7 +242,7 @@ public class control : MonoBehaviour
 
 		//check if player is falling
 		if (rb2d.velocity.y < -0.5) {
-			anim.SetBool ("falling", true);
+			anim.SetBool ("falling", true);           
 		} else if (rb2d.velocity.y == 0) {
 			anim.SetBool ("falling", false);
 		}

@@ -80,6 +80,7 @@ public class ai : MonoBehaviour {
 
         //Debug.Log(Distance().ToString());
         
+       
         
 
         //keep health in range
@@ -102,12 +103,6 @@ public class ai : MonoBehaviour {
         //check that the fight is on before fighting
         if(fs.fight)
         {
-            //if health is less than 0 player wins
-            if (health <= 0)
-            {
-                fs.hasWon();
-            }
-
 
             //check that ai hasnt attacked before doing anything else
             if (!attacking && !taunt)
@@ -139,6 +134,22 @@ public class ai : MonoBehaviour {
                 }
 
             }
+
+            //if health is less than 0 player wins
+            if (health <= 0)
+            {
+                fs.hasWon();
+                anim.enabled = false;
+            }
+
+            
+        }
+
+
+        //check that we have won to disable animation
+        if(fs.lose)
+        {
+            anim.enabled = false;
         }
     }
 
@@ -225,6 +236,7 @@ public class ai : MonoBehaviour {
             swichClips(landingSound, taunt2Sound);
             jumping = false;
             attacking = false;
+            anim.SetBool("isFalling", false);
         }
     }
 
