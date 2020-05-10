@@ -1,42 +1,105 @@
 fileFormatVersion: 2
 guid: 6a269958c7bc25148b02da5c0f3ec029
-timeCreated: 1555281314
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Idle1
-    21300002: Idle2
-    21300004: Idle3
-    21300006: Walking5
-    21300008: Walking1
-    21300010: Walking2
-    21300012: Walking3
-    21300014: Walking4
-    21300016: Taunt1
-    21300018: Taunt2
-    21300020: Taunt3
-    21300022: Punch1
-    21300024: Punch2
-    21300026: Punch3
-    21300028: Kick4
-    21300030: Kick1
-    21300032: Kick2
-    21300034: Kick3
-    21300036: Poke1
-    21300038: Poke2
-    21300040: Poke3
-    21300042: Poke4
-    21300044: Poke5
-    21300046: Upslash1
-    21300048: Upslash2
-    21300050: Upslash3
-    21300052: Upslash4
-    21300054: Jump1
-    21300056: Jump2
-    21300058: Jump3
-    21300060: Falling1
-    21300062: Falling2
-  serializedVersion: 4
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Idle1
+  - first:
+      213: 21300002
+    second: Idle2
+  - first:
+      213: 21300004
+    second: Idle3
+  - first:
+      213: 21300006
+    second: Walking5
+  - first:
+      213: 21300008
+    second: Walking1
+  - first:
+      213: 21300010
+    second: Walking2
+  - first:
+      213: 21300012
+    second: Walking3
+  - first:
+      213: 21300014
+    second: Walking4
+  - first:
+      213: 21300016
+    second: Taunt1
+  - first:
+      213: 21300018
+    second: Taunt2
+  - first:
+      213: 21300020
+    second: Taunt3
+  - first:
+      213: 21300022
+    second: Punch1
+  - first:
+      213: 21300024
+    second: Punch2
+  - first:
+      213: 21300026
+    second: Punch3
+  - first:
+      213: 21300028
+    second: Kick4
+  - first:
+      213: 21300030
+    second: Kick1
+  - first:
+      213: 21300032
+    second: Kick2
+  - first:
+      213: 21300034
+    second: Kick3
+  - first:
+      213: 21300036
+    second: Poke1
+  - first:
+      213: 21300038
+    second: Poke2
+  - first:
+      213: 21300040
+    second: Poke3
+  - first:
+      213: 21300042
+    second: Poke4
+  - first:
+      213: 21300044
+    second: Poke5
+  - first:
+      213: 21300046
+    second: Upslash1
+  - first:
+      213: 21300048
+    second: Upslash2
+  - first:
+      213: 21300050
+    second: Upslash3
+  - first:
+      213: 21300052
+    second: Upslash4
+  - first:
+      213: 21300054
+    second: Jump1
+  - first:
+      213: 21300056
+    second: Jump2
+  - first:
+      213: 21300058
+    second: Jump3
+  - first:
+      213: 21300060
+    second: Falling1
+  - first:
+      213: 21300062
+    second: Falling2
+  externalObjects: {}
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -54,6 +117,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -62,9 +127,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 1
     aniso: -1
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -76,41 +141,63 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: WebGL
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -128,6 +215,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 9dba5deb78b4f21409aa8a397aa13936
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Idle2
       rect:
@@ -142,6 +236,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2323b494574efd2489827d13ed47c27e
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Idle3
       rect:
@@ -156,6 +257,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 5f98c95bc44c5c44cb93466149cea7cf
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Walking5
       rect:
@@ -170,6 +278,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: d65f07079eff53f4aabbfbf045694218
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Walking1
       rect:
@@ -184,6 +299,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e968417fcf80ef74aa966760c683fce4
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Walking2
       rect:
@@ -198,6 +320,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 073e5a92116230a46ad3bc32839c4c14
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Walking3
       rect:
@@ -212,6 +341,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: b61296abcb7fcb448b6a58748e7cd295
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Walking4
       rect:
@@ -226,6 +362,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: f0f7933552f69aa4e9e38f975c96f9a1
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Taunt1
       rect:
@@ -240,6 +383,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 706a0bd8639f7b944924105342afda2b
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Taunt2
       rect:
@@ -254,6 +404,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6f6a436adde77b44684806fad236ce4f
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Taunt3
       rect:
@@ -268,6 +425,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: b328fa8fa63d34649aae77d02c95a1f1
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Punch1
       rect:
@@ -282,6 +446,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 9e0a41bd1f7d254418f077a8a33db111
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Punch2
       rect:
@@ -296,6 +467,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 3d1e04ece31a12e488f1b9d0a0deeef8
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Punch3
       rect:
@@ -310,6 +488,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: f80fbaf2ddd0b9d42b3e8aba4d9939f0
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Kick4
       rect:
@@ -324,6 +509,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 67d11c350250eaa4fa09de51d8f85893
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Kick1
       rect:
@@ -338,6 +530,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a127bebab1ef15f409310794384c3de1
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Kick2
       rect:
@@ -352,6 +551,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 1d464a1c63615bd4ba2edfacb8519fae
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Kick3
       rect:
@@ -366,6 +572,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 30691340dffb049419754a9a8602c7c1
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Poke1
       rect:
@@ -380,6 +593,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 884269108ee329d49a91d107b9cf5a7e
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Poke2
       rect:
@@ -394,6 +614,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 26cb6a5c4e04de948a1d546d7eff821a
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Poke3
       rect:
@@ -408,6 +635,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 7d0dab409c4aced4a8f44c4ad5e26b8a
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Poke4
       rect:
@@ -422,6 +656,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 7c51f23a1ace37f4098e08c9a891868a
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Poke5
       rect:
@@ -436,6 +677,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 49ab78ea13b0688499dcb1bd340cea64
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Upslash1
       rect:
@@ -450,6 +698,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0bbcbfa324caecc4ba7431e9521c16dd
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Upslash2
       rect:
@@ -464,6 +719,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 4c8ed964cfa6f88468297a5113b0ac91
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Upslash3
       rect:
@@ -478,6 +740,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e1184d9be93bd3841a8b6d74f2f738ac
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Upslash4
       rect:
@@ -492,6 +761,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 2cd2cf96665cfca409211baaa0112540
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Jump1
       rect:
@@ -506,6 +782,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 28f79302a7ce4594db5d8c69a831b020
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Jump2
       rect:
@@ -520,6 +803,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 11066e5cac96f0542b548a85f018166f
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Jump3
       rect:
@@ -534,6 +824,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 47cfac5d67ec1c94abc95bde35f94ebd
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Falling1
       rect:
@@ -548,6 +845,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: bf1444a075a416f45803f3a3b484ae62
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: Falling2
       rect:
@@ -562,9 +866,26 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 3a01edccff9395f499c09bfb04dedf4b
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

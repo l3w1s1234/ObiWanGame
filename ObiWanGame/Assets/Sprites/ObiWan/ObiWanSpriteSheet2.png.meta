@@ -1,44 +1,111 @@
 fileFormatVersion: 2
 guid: aa25b66b963bd594b8b7f845e4c53049
-timeCreated: 1546545204
-licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: idle
-    21300002: idle1
-    21300004: idle2
-    21300006: walking4
-    21300008: walking
-    21300010: walking1
-    21300012: walking2
-    21300014: walking3
-    21300016: highground
-    21300018: highground1
-    21300020: highground2
-    21300022: punch
-    21300024: punch1
-    21300026: punch2
-    21300028: kick3
-    21300030: kick
-    21300032: kick1
-    21300034: kick2
-    21300036: poke
-    21300038: poke1
-    21300040: poke2
-    21300042: poke3
-    21300044: poke4
-    21300046: slash
-    21300048: slash1
-    21300050: slash2
-    21300052: slash3
-    21300054: ObiWanSpriteSheet2_38
-    21300056: jump
-    21300058: jump2
-    21300060: jump3
-    21300062: falling
-    21300064: falling1
-    21300066: ObiWanSpriteSheet2_26
-  serializedVersion: 4
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: idle
+  - first:
+      213: 21300002
+    second: idle1
+  - first:
+      213: 21300004
+    second: idle2
+  - first:
+      213: 21300006
+    second: walking4
+  - first:
+      213: 21300008
+    second: walking
+  - first:
+      213: 21300010
+    second: walking1
+  - first:
+      213: 21300012
+    second: walking2
+  - first:
+      213: 21300014
+    second: walking3
+  - first:
+      213: 21300016
+    second: highground
+  - first:
+      213: 21300018
+    second: highground1
+  - first:
+      213: 21300020
+    second: highground2
+  - first:
+      213: 21300022
+    second: punch
+  - first:
+      213: 21300024
+    second: punch1
+  - first:
+      213: 21300026
+    second: punch2
+  - first:
+      213: 21300028
+    second: kick3
+  - first:
+      213: 21300030
+    second: kick
+  - first:
+      213: 21300032
+    second: kick1
+  - first:
+      213: 21300034
+    second: kick2
+  - first:
+      213: 21300036
+    second: poke
+  - first:
+      213: 21300038
+    second: poke1
+  - first:
+      213: 21300040
+    second: poke2
+  - first:
+      213: 21300042
+    second: poke3
+  - first:
+      213: 21300044
+    second: poke4
+  - first:
+      213: 21300046
+    second: slash
+  - first:
+      213: 21300048
+    second: slash1
+  - first:
+      213: 21300050
+    second: slash2
+  - first:
+      213: 21300052
+    second: slash3
+  - first:
+      213: 21300054
+    second: ObiWanSpriteSheet2_38
+  - first:
+      213: 21300056
+    second: jump
+  - first:
+      213: 21300058
+    second: jump2
+  - first:
+      213: 21300060
+    second: jump3
+  - first:
+      213: 21300062
+    second: falling
+  - first:
+      213: 21300064
+    second: falling1
+  - first:
+      213: 21300066
+    second: ObiWanSpriteSheet2_26
+  externalObjects: {}
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -56,6 +123,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -64,9 +133,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 1
     aniso: -1
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -78,33 +147,63 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: Standalone
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
     maxTextureSize: 2048
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -122,6 +221,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8290ab20c33981e4194a8968ad4c083a
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: idle1
       rect:
@@ -136,6 +242,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6f6e7f0330f8d2b45a964ab649cd1b4d
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: idle2
       rect:
@@ -150,6 +263,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: d6c61d1ca6a7cf947b7f230003896277
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: walking4
       rect:
@@ -164,6 +284,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 05bdfeab5946e014c95a2a53f652667c
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: walking
       rect:
@@ -178,6 +305,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0ad92310642373049966d6f62e4b17d5
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: walking1
       rect:
@@ -192,6 +326,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 8ea77358d54d96c49986759b79276a07
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: walking2
       rect:
@@ -206,6 +347,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: f760e33563731554892bf24aa1a670b1
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: walking3
       rect:
@@ -220,6 +368,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 459c14fbc8ac5be4a8ccd3cecb8db37d
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: highground
       rect:
@@ -234,6 +389,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: b81a2a50b9307cb4494bf0db4e1b66e4
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: highground1
       rect:
@@ -248,6 +410,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: f721440d8993264449d2469d52c3235f
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: highground2
       rect:
@@ -262,6 +431,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 7652d0549e25fca4a8781f2474a440cf
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: punch
       rect:
@@ -276,6 +452,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 47a6033664cf75c4a9886b214d0e18a7
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: punch1
       rect:
@@ -290,6 +473,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 6f002e988569ebe4b91d54cf4d9d763b
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: punch2
       rect:
@@ -304,6 +494,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 174f9562e6be1b84d84c2cf87e3bfb14
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: kick3
       rect:
@@ -318,6 +515,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: b6f232940d2028448b2f4b42a754d63e
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: kick
       rect:
@@ -332,6 +536,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 17c5ecea25e2e5f4490ceb22d7d73e6c
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: kick1
       rect:
@@ -346,6 +557,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: e50b0dd27e1c8bd46b9d76e9f687c3e5
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: kick2
       rect:
@@ -360,6 +578,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: c43f8cca7a42ea840973014e9839ee7b
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: poke
       rect:
@@ -374,6 +599,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: fe90344cee6daab45a70a4b6aacaab88
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: poke1
       rect:
@@ -388,6 +620,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 9a2bac3e19dd2354398d416605aaee79
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: poke2
       rect:
@@ -402,6 +641,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: f660072d350fd9847bdd5e134df43ae7
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: poke3
       rect:
@@ -416,6 +662,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: aaa9e8b142248a74c9b4af7083c991c1
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: poke4
       rect:
@@ -430,6 +683,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 5a9f2a54d691dd64d9930eb4789183d6
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: slash
       rect:
@@ -444,6 +704,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 0892e0af799db67478315f62f5a4b9f9
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: slash1
       rect:
@@ -458,6 +725,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: b31a8db9e4bb3cf499ce0e7486bfd150
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: slash2
       rect:
@@ -472,6 +746,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: bdb82afb3fe5eee49bfc8812d9338448
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: slash3
       rect:
@@ -486,6 +767,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: fa3ae32f6783d144aa3bc0cf5f54e04a
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: jump
       rect:
@@ -500,6 +788,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 3ee4a8a1a0831e54db8c2605d36911bb
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: jump2
       rect:
@@ -514,6 +809,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: f4ca39d1dee7a6d4382dbbf44d217586
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: jump3
       rect:
@@ -528,6 +830,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 739c15ccfe08ff34bbfa0d07577dda30
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: falling
       rect:
@@ -542,6 +851,13 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: a65dc77ee8bd1c842a135a308bb173db
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     - serializedVersion: 2
       name: falling1
       rect:
@@ -556,9 +872,26 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
+      bones: []
+      spriteID: 5882f994497f5064a9bff4ac11218062
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
